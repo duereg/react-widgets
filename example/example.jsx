@@ -109,7 +109,10 @@ var App = React.createClass({
               value={ this.state.calValue }
               min={new Date(2014, 9, 15)}
               max={new Date(2025, 0, 15)}
-              onChange={change.bind(null, 'calValue')}/>
+              onChange={change.bind(null, 'calValue')}
+              dates={ 
+                {'2014-12-05': '2 hours farting'}
+              }/>
           </section>
           <section className="example" style={{ marginBottom: 20 }}>
           <ComboBox

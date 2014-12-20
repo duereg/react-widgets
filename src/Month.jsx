@@ -64,10 +64,11 @@ module.exports = React.createClass({
       <tr key={'week_' + i}>
       { row.map( (day, idx) => {
         var focused  = dates.eq(day, this.state.focusedDate, 'day')
-          , selected = dates.eq(day, this.props.selectedDate, 'day');
+          , selected = dates.eq(day, this.props.selectedDate, 'day')
+          , dateKey = dates.format(day, 'yyyy-MM-dd');
 
         return !dates.inRange(day, this.props.min, this.props.max)
-            ? <td  key={'day_' + idx} className='rw-empty-cell'>&nbsp;</td>
+            ? <td key={'day_' + idx} className='rw-empty-cell'>&nbsp;</td>
             : (<td key={'day_' + idx} >
                 <Btn
                   tabIndex='-1'
@@ -81,7 +82,14 @@ module.exports = React.createClass({
                     'rw-state-selected': selected,
                   })}
                   id={focused ? id : undefined}>
-                  {dates.format(day, 'dd')}
+                  <div>
+                    <div className='rw-btn--day'>
+                      {dates.format(day, 'dd')}
+                    </div>
+                    <div className='rw-btn--content'>
+                      {!!this.props.dates && !!this.props.dates[dateKey] ? this.props.dates[dateKey] : <br />}
+                    </div>
+                  </div>
                 </Btn>
               </td>)
       })}

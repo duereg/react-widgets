@@ -93,6 +93,7 @@ var Calendar = React.createClass({
 
       initialView: 'month',
       finalView: 'century',
+      dates: {},
 
       maintainFocus: true
     }
@@ -167,6 +168,7 @@ var Calendar = React.createClass({
             onMoveRight={this._maybeHandle(this.navigate.bind(null,  dir.RIGHT))}
             disabled={this.props.disabled}
             readOnly={this.props.readOnly}
+            dates={this.props.dates}
             min={this.props.min}
             max={this.props.max}/>
         </SlideTransition>
